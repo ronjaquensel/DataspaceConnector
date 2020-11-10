@@ -241,6 +241,20 @@
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/libs
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 <!--			<plugin>-->
 <!--				<groupId>org.springframework.boot</groupId>-->
@@ -255,6 +269,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
+							<classpathPrefix>libs/</classpathPrefix>
 							<mainClass>de.fraunhofer.isst.dataspaceconnector.ConnectorApplication</mainClass>
 						</manifest>
 					</archive>
