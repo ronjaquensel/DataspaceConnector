@@ -212,6 +212,23 @@
 		</repository>
 	</repositories>
 
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>selemaven-release</id>
+			<name>SELE maven release artifacts</name>
+			<url>https://nexus.apps.sele.iml.fraunhofer.de/repository/selemaven-release/</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>true</uniqueVersion>
+			<id>selemaven-snapshot</id>
+			<name>SELE maven snapshot artifacts</name>
+			<url>https://nexus.apps.sele.iml.fraunhofer.de/repository/selemaven-snapshot/</url>
+			<layout>default</layout>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
