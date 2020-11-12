@@ -2,7 +2,6 @@ package de.fraunhofer.isst.dataspaceconnector.services.communication;
 
 import de.fraunhofer.iais.eis.*;
 import de.fraunhofer.isst.ids.framework.configuration.ConfigurationContainer;
-import de.fraunhofer.isst.ids.framework.exceptions.HttpClientException;
 import de.fraunhofer.isst.ids.framework.messages.InfomodelMessageBuilder;
 import de.fraunhofer.isst.ids.framework.messaging.core.handler.api.util.Util;
 import de.fraunhofer.isst.ids.framework.spring.starter.IDSHttpService;
@@ -47,7 +46,7 @@ public class ConnectorRequestServiceImpl implements ConnectorRequestService {
      * @throws java.security.NoSuchAlgorithmException if any.
      */
     public ConnectorRequestServiceImpl(ConfigurationContainer configurationContainer, TokenProvider tokenProvider)
-            throws HttpClientException, KeyManagementException, NoSuchAlgorithmException {
+            throws KeyManagementException, NoSuchAlgorithmException {
         this.connector = configurationContainer.getConnector();
         this.tokenProvider = tokenProvider;
 

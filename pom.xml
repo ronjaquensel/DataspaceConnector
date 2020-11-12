@@ -55,7 +55,7 @@
 
 	<properties>
 		<project.version>3.2.1-SNAPSHOT</project.version>
-		<framework.version>3.2.3</framework.version>
+		<framework.version>3.2.4-SNAPSHOT</framework.version>
 
 		<java.version>11</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -216,6 +216,11 @@
 			<id>isst-nexus-public</id>
 			<name>isst-public</name>
 			<url>https://mvn.ids.isst.fraunhofer.de/nexus/repository/ids-public/</url>
+		</repository>
+		<!-- TODO only required for SNAPSHOT version of framework -->
+		<repository>
+			<id>gitlab-maven</id>
+			<url>https://gitlab.cc-asp.fraunhofer.de/api/v4/projects/12834/packages/maven</url>
 		</repository>
 	</repositories>
 

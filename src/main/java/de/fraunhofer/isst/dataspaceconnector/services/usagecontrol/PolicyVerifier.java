@@ -4,7 +4,6 @@ import de.fraunhofer.iais.eis.Contract;
 import de.fraunhofer.iais.eis.Rule;
 import de.fraunhofer.isst.dataspaceconnector.services.HttpUtils;
 import de.fraunhofer.isst.dataspaceconnector.services.communication.MessageService;
-import de.fraunhofer.isst.ids.framework.exceptions.HttpClientException;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,7 +82,7 @@ public class PolicyVerifier {
                 LOGGER.error("NOT LOGGED");
                 return allowAccess();
             }
-        } catch (HttpClientException | IOException e) {
+        } catch (IOException e) {
             LOGGER.error(e.getMessage());
             return inhibitAccess();
         }
@@ -107,7 +106,7 @@ public class PolicyVerifier {
                 LOGGER.error("NOT NOTIFIED");
                 return allowAccess();
             }
-        } catch (HttpClientException | IOException e) {
+        } catch (IOException e) {
             LOGGER.error(e.getMessage());
             return inhibitAccess();
         }
