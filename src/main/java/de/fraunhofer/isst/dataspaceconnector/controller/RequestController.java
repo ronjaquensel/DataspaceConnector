@@ -112,16 +112,12 @@ public class RequestController {
                     example = "https://w3id.org/idsa/autogen/resource/a4212311-86e4-40b3-ace3-ef29cd687cf9")
             @RequestParam(value = "requestedArtifact", required = false) URI requestedArtifact) throws IOException {
         if (tokenProvider.getTokenJWS() != null) {
-
-            LOGGER.info("Sending DescriptionRequestMessage...");
             Response response = requestMessageService.sendDescriptionRequestMessage(recipient, requestedArtifact);
             String responseAsString = response.body().string();
-            LOGGER.info("Received response to DescriptionRequestMessage:\n{}", responseAsString);
 
             String hint = "";
             if (requestedArtifact != null) {
                 try {
-                    LOGGER.info("Preparing to save metadata from response...");
                     hint = "Validation key: " + connectorRequestServiceUtils.saveMetadata(responseAsString) + "\n";
                 } catch (Exception e) {
                     LOGGER.error(e.getMessage());

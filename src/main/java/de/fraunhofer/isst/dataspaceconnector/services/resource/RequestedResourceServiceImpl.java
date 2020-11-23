@@ -56,12 +56,9 @@ public class RequestedResourceServiceImpl implements RequestedResourceService {
      */
     @Override
     public UUID addResource(ResourceMetadata resourceMetadata) {
-        LOGGER.info("Creating RequestedResource object...");
         RequestedResource resource = new RequestedResource(new Date(), new Date(), resourceMetadata, "", 0);
 
-        LOGGER.info("Saving resource to repository...");
         requestedResourceRepository.save(resource);
-        LOGGER.info("Putting resource in resource map...");
         requestedResources.put(resource.getUuid(), idsUtils.getAsResource(resource));
 
         return resource.getUuid();

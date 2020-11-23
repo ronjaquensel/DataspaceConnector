@@ -51,27 +51,18 @@ public class ConnectorRequestServiceUtils {
      * @throws java.lang.Exception if any.
      */
     public UUID saveMetadata(String response) throws Exception {
-        LOGGER.info("Parsing response to map object...");
         Map<String, String> map = MultipartStringParser.stringToMultipart(response);
         String header = map.get("header");
         String payload = map.get("payload");
 
-        LOGGER.info("Header:\n{}", header);
-        LOGGER.info("Payload:\n{}", payload);
-
         try {
-            LOGGER.info("Deserializing header to DescriptionResponseMessage...");
             serializerProvider.getSerializer().deserialize(header, DescriptionResponseMessage.class);
 //            ObjectMapper mapper = new ObjectMapper();
 //            ResourceMetadata resourceMetadata = mapper.readValue(payload, ResourceMetadata.class);
 
-            LOGGER.info("Deserializing payload to ResourceImpl...");
             Resource resource = serializerProvider.getSerializer().deserialize(payload, ResourceImpl.class);
-            LOGGER.info("Preparing to save metadata in database...");
             return requestedResourceService.addResource(deserializeMetadata(resource));
         } catch (Exception e) {
-            LOGGER.error("Exception of type {} occurred.", e.getClass());
-            LOGGER.error("Exception: ", e);
             throw new Exception("Metadata could not be saved: " + e.getMessage());
         }
     }
