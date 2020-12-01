@@ -11,7 +11,7 @@ COPY src /tmp/src/
 RUN mvn clean package -DskipTests -Dmaven.javadoc.skip=true
 
 FROM adoptopenjdk/openjdk11:jre-11.0.8_10-alpine
-RUN mkdir /app && chmod o+rwx /app
+RUN mkdir /app && chmod ugo+rwx /app
 
 COPY --from=maven /tmp/target/*.jar /app/app.jar
 
